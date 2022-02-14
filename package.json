@@ -1,0 +1,23 @@
+{
+  "name": "video",
+  "version": "1.0.0",
+  "description": "node practice ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ndpenaloza/video.git"
+  },
+  "author": "Nick D. Penaloza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ndpenaloza/video/issues"
+  },
+  "homepage": "https://github.com/ndpenaloza/video#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "joi": "^17.6.0"
+  }
+}
