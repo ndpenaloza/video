@@ -1,8 +1,18 @@
 const Joi = require('joi');
+const morgan = require('morgan');
 const express = require('express');
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
+if (app.get('env') === 'development') {
+  app.use(morgan('tiny'));
+  console.log(`Morgan enabled...`)
+}
+
+
 
 const genres = [
   {id: 1, name: 'horror'},
