@@ -2,79 +2,18 @@ const Joi = require('joi');
 const morgan = require('morgan');
 const express = require('express');
 const app = express();
+const home = require('./routes/home');
+const genres = require('./routes/genres');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use('/', home);
+app.use('/api/genres', genres);
 
 if (app.get('env') === 'development') {
   app.use(morgan('tiny'));
   console.log(`Morgan enabled...`)
-}
-
-
-
-const genres = [
-  {id: 1, name: 'horror'},
-  {id: 2, name: 'drama'},
-  {id: 3, name: 'comedy'}
-]
-
-app.get('/', (req, res) => {
-  res.send('Welcome to Video');
-});
-
-app.get('/api/genres', (req, res) => {
-  res.send(genres)
-});
-
-app.get('/api/genres/:id', (req, res) => {
-  const genre = genres.find(c => c.id === parseInt(req.params.id));
-  if (!genre) return res.status(404).send('genre not found')
-  res.send(genre);
-})
-
-app.post('/api/genres', (req, res) => {
-  const { error } = validateGenre(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
-  const genre = {
-    id: genres.length + 1,
-    name: req.body.name
-  };
-  genres.push(genre);
-  res.send(genre);
-})
-
-app.put('/api/genres/:id', (req, res) => {
-  const genre = genres.find(c => c.id === parseInt(req.params.id));
-  if (!genre) return res.status(404).send('genre not found')
-  
-  const { error } = validateGenre(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
-  genre.name = req.body.name;
-  res.send(genre);
-
-
-})
-
-app.delete('/api/genres/:id', (req, res) => {
-  const genre = genres.find(c => c.id === parseInt(req.params.id));
-  if (!genre) return res.status(404).send('genre not found')
-
-  const index = genres.indexOf(genre);
-  genres.splice(index, 1)
-
-  res.send(genre)
-})
-
-function validateGenre(genre) {
-  const schema = Joi.object({
-    name: Joi.string().min(3).required() 
-  })
-  
-  return schema.validate(genre);
 }
 
 const port = process.env.PORT || 3000;
