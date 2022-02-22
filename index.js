@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const mongoose = require('mongoose');
 const morgan = require('morgan');
 const express = require('express');
 const app = express();
@@ -8,6 +8,10 @@ const genres = require('./routes/genres');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+
+mongoose.connect('mongodb://localhost/video')
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('Could not connect to MongoDB', err))
 app.use('/', home);
 app.use('/api/genres', genres);
 
