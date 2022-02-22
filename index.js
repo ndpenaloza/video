@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const home = require('./routes/home');
 const genres = require('./routes/genres');
+const customers = require('./routes/customers');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,6 +15,7 @@ mongoose.connect('mongodb://localhost/video')
   .catch((err) => console.error('Could not connect to MongoDB', err))
 app.use('/', home);
 app.use('/api/genres', genres);
+app.use('/api/customers', customers);
 
 if (app.get('env') === 'development') {
   app.use(morgan('tiny'));
