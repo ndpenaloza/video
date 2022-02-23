@@ -19,8 +19,8 @@ app.use('/api/customers', customers);
 
 if (app.get('env') === 'development') {
   app.use(morgan('tiny'));
-  console.log(`Morgan enabled...`)
-}
+  console.log(`Morgan enabled...`);
+};
 
 const port = process.env.PORT || 3000;
 
