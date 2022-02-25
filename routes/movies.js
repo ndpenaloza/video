@@ -29,15 +29,4 @@ router.post('/', async (req, res) => {
   movie = await movie.save();
 });
 
-function validateMovie(movie) {
-  const schema = Joi.object({
-    title: Joi.string().min(1).max(255).required(),
-    genreId: Joi.string().required(),
-    numberInStock: Joi.number().min(0).max(255).required(),
-    dailyRentalRate: Joi.number().min(0).max(255).required(),
-  })
-  return schema.validate(genre);
-};
-
-module.exports.Movie = Movie;
-module.exports.validateMovie = validateMovie;
+module.exports = router; 
