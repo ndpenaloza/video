@@ -27,6 +27,8 @@ router.post('/', async (req, res) => {
   });
 
   movie = await movie.save();
+
+  res.send(movie);
 });
 
 module.exports = router; 
