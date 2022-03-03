@@ -1,10 +1,6 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
-const genreSchema = new mongoose.Schema({
- 
-});
-
 const User = mongoose.model('User', new mongoose.Schema({
   name: {
     type: String,
@@ -40,4 +36,4 @@ function validateUser(user) {
 };
 
 module.exports.User = User;
-module.exports.validateUser = validateUser;
+module.exports.validate = validateUser;
