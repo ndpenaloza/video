@@ -17,5 +17,7 @@ module.exports = function(app) {
   app.use('/api/rentals', rentals);
   app.use('/api/users', users);
   app.use('/api/auth', auth);
-  app.use(error); 
+  app.use(error);
+  app.use(express.urlencoded({ extended: true }));
+  app.use(express.static('public'));
 }
