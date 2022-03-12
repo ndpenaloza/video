@@ -26,3 +26,5 @@
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to mongodb://localhost/video"}
+{"level":"info","message":"Connected to mongodb://localhost/video_test"}
