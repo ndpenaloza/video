@@ -14,4 +14,6 @@ if (app.get('env') === 'development') {
 };
 
 const port = process.env.PORT || 3000;
-app.listen(3000, () => console.log(`Listening to PORT: ${port}`));
+const server = app.listen(3000, () => console.log(`Listening to PORT: ${port}`));
+
+module.exports = server;
