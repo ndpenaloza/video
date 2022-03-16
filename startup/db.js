@@ -8,6 +8,6 @@ module.exports = function() {
   useUnifiedTopology: true
   })
   .then(() => console.log(`Connected to ${db}`))
-  .then(() => winston.info(`Connected to ${db}`))
+  // .then(() => winston.info(`Connected to ${db}`))
   .catch((err) => console.error('Could not connect to MongoDB', err))
 }
